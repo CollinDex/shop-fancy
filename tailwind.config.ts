@@ -15,7 +15,8 @@ const config: Config = {
       },
       colors: {
         'customBg': '#EBEBEB',
-        'headerBg': '#093858'
+        'headerBg': '#FF7F3E',
+        'itemBg': '#F1F1F1'
       }
     },
   },

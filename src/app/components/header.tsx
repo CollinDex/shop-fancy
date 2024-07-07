@@ -8,7 +8,7 @@ const Header:React.FC = () => {
     const icons = [{alt:'Notification', src: '/notification-icon.svg'}, {alt:'Cart', src: '/cart-icon.svg'}, {alt:'Profile', src: '/profile-icon.svg'}];
 
     return (
-        <div className="text-white w-full bg-headerBg grid grid-cols-[1fr_2fr_1fr] gap-4 p-4 items-center shadow">
+        <div className="text-white w-full bg-headerBg flex flex-row justify-between md:grid grid-cols-[1fr_2fr_1fr] gap-4 p-2 md:p-4 items-center shadow">
             <div className="hover:cursor-pointer pt-2 pl-4">
                 <Image
                     src="/hero-icon.svg"
@@ -19,7 +19,7 @@ const Header:React.FC = () => {
                     className="w-auto h-auto"
                 />
             </div>
-            <div className="w-full text-center flex flex-row justify-center gap-8 hover:cursor-pointer">
+            <div className="w-full text-center hidden md:flex flex-row justify-center gap-8 hover:cursor-pointer">
                 {
                     headerTags.map((tag, index) => {
                         return(
