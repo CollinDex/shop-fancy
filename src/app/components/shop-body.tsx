@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ItemCardProps } from "../types/types";
 
-const ShopBody = () => {
+export const ShopBody = () => {
     const links = ['Water Bottles', 'Tot Bags', 'Crocs', 'Bikers Shorts', 'Crop Tops', 'Bucket Hats', 'Jewelry Box'];
 
     return (
@@ -17,19 +17,18 @@ const ShopBody = () => {
                 }
             </div>
             <div className="flex flex-col">
-                <div className="pb-4 mt-[-25px]">Search Bar</div>
+                <div className="pb-2">
+                    <input className="w-full border-2 border-searchBg rounded-full p-1 md:p-2 bg-itemBg" type="text" name="searchBox" id="searchBox" placeholder="Search..."/>
+                </div>
                 <ItemsContainer/>
             </div>
         </div>
     );
 };
 
-
-
-
-const ItemsContainer = () => {
+export const ItemsContainer = () => {
     const items = [
-        {name:'Gym Water Bottle', price:'5,000', img:'/images/1.png'},{name:'Cross Body Bag', price:'8,000', img:'/images/2.png'},{name:'Travel Bottle Set', price:'3,000', img:'/images/3.png'},{name:'Mirror', price:'7,000', img:'/images/4.png'},{name:'Water Bottle', price:'5,000', img:'/images/5.png'},{name:'Melon Hat', price:'5,000', img:'/images/6.png'},{name:'Purse', price:'5,000', img:'/images/7.png'},{name:'Bucket Hat', price:'5,000', img:'/images/8.png'},{name:'Tongue Scraper', price:'5,000', img:'/images/9.png'},{name:'Face Cap', price:'5,000', img:'/images/10.png'},{name:'Gym Water Bottle', price:'5,000', img:'/images/1.png'},{name:'Cross Body Bag', price:'8,000', img:'/images/2.png'},{name:'Travel Bottle Set', price:'3,000', img:'/images/3.png'}
+        {name:'Gym Water Bottle', price:'5,000', img:'/images/1.png'},{name:'Cross Body Bag', price:'8,000', img:'/images/2.png'},{name:'Travel Bottle Set', price:'3,000', img:'/images/3.png'},{name:'Mirror', price:'7,000', img:'/images/4.png'},{name:'Water Bottle', price:'5,000', img:'/images/5.png'},{name:'Melon Hat', price:'5,000', img:'/images/6.png'},{name:'Purse', price:'5,000', img:'/images/7.png'},{name:'Bucket Hat', price:'5,000', img:'/images/8.png'},{name:'Tongue Scraper', price:'5,000', img:'/images/9.png'},{name:'Face Cap', price:'5,000', img:'/images/10.png'},{name:'Gym Water Bottle', price:'5,000', img:'/images/1.png'},{name:'Cross Body Bag', price:'8,000', img:'/images/2.png'}
     ];
 
     return (
@@ -67,7 +66,7 @@ const ItemsContainer = () => {
     ); 
 };
 
-const Item:React.FC<ItemCardProps> = ({item}) => {
+export const Item:React.FC<ItemCardProps> = ({item}) => {
     const {name, price, img} = item;
     return (
         <div className="flex flex-col w-52 h-auto p-2 pt-4 hover:cursor-pointer">
@@ -86,7 +85,7 @@ const Item:React.FC<ItemCardProps> = ({item}) => {
                     width={250}
                     height={250}
                     priority= {true}
-                    className="pt-8 w-52 h-52"
+                    className="pt-8 w-full"
                 />
             </div>
             <div className="bg-white p-2 rounded-b-md">
@@ -104,5 +103,3 @@ const Item:React.FC<ItemCardProps> = ({item}) => {
         </div>
     );
 };
-
-export default ShopBody;
