@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { popins } from "../layout";
+import { popins } from "../page";
 
 export const Advertisement = () => {
     return (

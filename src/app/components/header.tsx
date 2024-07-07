@@ -16,14 +16,14 @@ const Header:React.FC = () => {
                     height={50}
                     alt="Hero Icon"
                     priority= {true}
-                    className="w-sm md:w-auto md:h-auto"
+                    className="w-sm md:w-60 md:h-auto"
                 />
             </div>
-            <div className="w-full text-center hidden md:flex flex-row justify-center gap-8 hover:cursor-pointer">
+            <div className="w-full text-center hidden md:flex flex-row justify-center  md:gap-4 lg:gap-8 hover:cursor-pointer">
                 {
                     headerTags.map((tag, index) => {
                         return(
-                            <p key={index} className="text-base">{tag}</p>
+                            <p key={index} className="text-sm lg:text-base">{tag}</p>
                         );
                     })
                 }
@@ -39,7 +39,7 @@ const Header:React.FC = () => {
                                 height={30}
                                 alt={icon.alt}
                                 priority= {true}
-                                className=" w-6 md:w-full hover:cursor-pointer"
+                                className=" w-6 lg:w-12 hover:cursor-pointer"
                             />
                         );
                     })

@@ -1,5 +1,5 @@
 import { ItemsContainer } from "./shop-body";
-import { popins, inter } from "../layout";
+import { popins } from "../page";
 
 const NewArrival:React.FC = () => {
     return (

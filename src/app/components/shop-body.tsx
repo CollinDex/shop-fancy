@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { Suspense } from "react";
+import { Spinner } from "./spinner/spinner";
 import { ItemCardProps } from "../types/types";
 
 export const ShopBody = () => {
@@ -69,8 +71,8 @@ export const ItemsContainer = () => {
 export const Item:React.FC<ItemCardProps> = ({item}) => {
     const {name, price, img} = item;
     return (
-        <div className="flex flex-col w-52 h-auto p-2 pt-4 hover:cursor-pointer">
-            <div className="hover:cursor-pointer relative bg-itemBg w-48 rounded-t-md">
+        <div className="flex flex-col w-24 md:w-52 h-auto p-2 pt-4 hover:cursor-pointer">
+            <div className="hover:cursor-pointer relative bg-itemBg w-26 md:w-48 rounded-t-md">
                 <Image
                     src={"/shopping-cart-icon.svg"}
                     width={150}
@@ -79,18 +81,22 @@ export const Item:React.FC<ItemCardProps> = ({item}) => {
                     priority= {true}
                     className="w-6 h-auto pt-1 absolute top-0 right-0"
                 />
-                <Image
-                    src={img}
-                    alt="Item Icon"
-                    width={250}
-                    height={250}
-                    priority= {true}
-                    className="pt-8 w-full"
-                />
+                <Suspense fallback= {<Spinner/>} >
+                    <Image
+                        src={img}
+                        alt="Item Icon"
+                        width={250}
+                        height={250}
+                        priority= {true}
+                        className="pt-8 w-full"
+                    />
+                </Suspense>
             </div>
-            <div className="bg-white p-2 rounded-b-md">
-                <p>{name}</p>
-                <p className="text-xs pb-1">{price}</p>
+            <div className="flex flex-col justify-between bg-white p-2 rounded-b-md h-full">
+                <div className="flex flex-col gap-2">
+                    <p>{name}</p>
+                    <p className="text-xs pb-1">{price}</p>
+                </div>
                 <Image
                     src="/stars.svg"
                     alt="Stars Icon"
