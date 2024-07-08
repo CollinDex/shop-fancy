@@ -19,7 +19,16 @@ const Header:React.FC = () => {
 
     return (
         <div className="text-white w-full bg-headerBg flex flex-row justify-between md:grid grid-cols-[1fr_2fr_1fr] gap-4 p-1 md:p-2 md:p-4 items-center shadow">
-            <div className="hover:cursor-pointer pt-2 pl-1 md:pl-4">
+            <div className="flex flex-row gap-1 hover:cursor-pointer pt-2 pl-1 md:pl-4">
+                <Image
+                    src="/menu.svg"
+                    width={150}
+                    height={50}
+                    alt="Hero Icon"
+                    priority= {true}
+                    className="md:hidden w-auto p-1"
+                    onClick={navigateHome}
+                />
                 <Image
                     src="/hero-icon.svg"
                     width={150}
