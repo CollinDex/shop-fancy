@@ -1,11 +1,21 @@
-'use-client'
-
+'use client'
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Header:React.FC = () => {
 
     const headerTags = ['Home', 'Market Place', 'About', 'Reviews', 'Delivery'];
     const icons = [{alt:'Notification', src: '/notification-icon.svg'}, {alt:'Cart', src: '/cart-icon.svg'}, {alt:'Profile', src: '/profile-icon.svg'}];
+
+    const router = useRouter();
+
+    const navigate = () => {
+        router.push('/cart');
+    };
+
+    const navigateHome = () => {
+        router.push('/');
+    };
 
     return (
         <div className="text-white w-full bg-headerBg flex flex-row justify-between md:grid grid-cols-[1fr_2fr_1fr] gap-4 p-1 md:p-2 md:p-4 items-center shadow">
@@ -17,6 +27,7 @@ const Header:React.FC = () => {
                     alt="Hero Icon"
                     priority= {true}
                     className="w-sm md:w-60 md:h-auto"
+                    onClick={navigateHome}
                 />
             </div>
             <div className="w-full text-center hidden md:flex flex-row justify-center  md:gap-4 lg:gap-8 hover:cursor-pointer">
@@ -40,6 +51,7 @@ const Header:React.FC = () => {
                                 alt={icon.alt}
                                 priority= {true}
                                 className=" w-6 lg:w-12 hover:cursor-pointer"
+                                onClick={navigate}
                             />
                         );
                     })
