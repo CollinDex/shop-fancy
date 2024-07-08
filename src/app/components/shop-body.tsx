@@ -71,7 +71,7 @@ export const ItemsContainer = () => {
 export const Item:React.FC<ItemCardProps> = ({item}) => {
     const {name, price, img} = item;
     return (
-        <div className="flex flex-col w-[50%] md:w-auto p-2 pt-4 hover:cursor-pointer w-full">
+        <div className="flex flex-col w-[50%] md:w-auto p-2 pt-4 hover:cursor-pointer">
             <div className="hover:cursor-pointer relative bg-itemBg   rounded-t-md ">
                 <Image
                     src={"/shopping-cart-icon.svg"}
