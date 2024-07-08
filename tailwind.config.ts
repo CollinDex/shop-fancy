@@ -18,6 +18,9 @@ const config: Config = {
         'headerBg': '#FF7F3E',
         'itemBg': '#F1F1F1',
         'searchBg': '#ABABAB'
+      },
+      fontSize: {
+        'xxs':'.55rem'
       }
     },
   },
