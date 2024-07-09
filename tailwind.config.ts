@@ -20,7 +20,7 @@ const config: Config = {
         'searchBg': '#ABABAB'
       },
       fontSize: {
-        'xxs':'.55rem'
+        'xxs':'.65rem'
       }
     },
   },

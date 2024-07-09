@@ -1,34 +1,21 @@
-'use client'
-
 import React from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import Header from "../components/header";
-import Recomendations from '../components/recommendations';
 import ShopFooter from "../components/shop-footer";
 
 export default function Cart() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-between bg-customBg text-black antialiased">
         <Header/>
-        <ShoppingCart/>
-        <Recomendations/>
+        <div>Checkout</div>
         <ShopFooter/>
     </div>
   );
-};
+}
+
+
 
 const ShoppingCart = () => {
-  const router = useRouter();
-
-  const toCheckout = () => {
-    router.push('/checkout');
-  };
-
-  const toHome = () => {
-    router.push('/');
-  };
-
   return (
     <div className="w-full min-h-screen p2 md:p-4 md:p-8">
       <div className="w-full shadow-lg rounded-lg p-2">
@@ -99,12 +86,11 @@ const ShoppingCart = () => {
           </div>
         </div>
         <div className="flex justify-between items-center mt-6">
-          <button className="flex items-center space-x-2 text-orange-600 border border-orange-600 px-4 py-2 rounded"
-          onClick={toHome}>
+          <button className="flex items-center space-x-2 text-orange-600 border border-orange-600 px-4 py-2 rounded">
             <span>&larr;</span>
             <span>Back to Shop</span>
           </button>
-          <button className="bg-orange-600 text-white px-4 py-2 rounded" onClick={toCheckout}>
+          <button className="bg-orange-600 text-white px-4 py-2 rounded">
             Check-Out &rarr;
           </button>
         </div>
