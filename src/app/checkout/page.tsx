@@ -1,100 +1,17 @@
-import React from 'react';
+'use client'
+
+import React, { FormEventHandler } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Header from "../components/header";
 import ShopFooter from "../components/shop-footer";
 
-export default function Cart() {
+export default function Checkout() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-between bg-customBg text-black antialiased">
         <Header/>
-        <div>Checkout</div>
+        <OrderSummary/>
         <ShopFooter/>
-    </div>
-  );
-}
-
-
-
-const ShoppingCart = () => {
-  return (
-    <div className="w-full min-h-screen p2 md:p-4 md:p-8">
-      <div className="w-full shadow-lg rounded-lg p-2">
-        <header className="flex justify-start items-center border-b md:pb-4 mb-6">
-          <h1 className="text-xl md:text-2xl font-semibold">Shopping Cart</h1>
-        </header>
-        <div className="w-full">
-          <table className="w-full text-left">
-            <thead className="bg-gray-200">
-              <tr>
-                <th className="p1 md:p-4 text-sm md:text-base">Product Detail</th>
-                <th className="p1 md:p-4 text-sm md:text-base">Quantity</th>
-                <th className="hidden md:block p1 md:p-4 text-sm md:text-base">Price</th>
-                <th className="p1 md:p-4 text-sm md:text-base">Total</th>
-                <th className="p1 md:p-4 text-sm md:text-base"></th>
-              </tr>
-            </thead>
-            <tbody className='p-4'>
-              {cartItems.map((item, index) => (
-                <tr key={index} className="border-2 rounded-full">
-                  <td className="p-2 md:p6 flex items-center space-x-1 md:space-x-4 mb-4">
-                    <Image src={item.img} alt={item.name} width={50} height={50} />
-                    <div className='flex flex-col justify-center items-between'>
-                        <span className='text-sm md:text-base'>{item.name}</span>
-                        <span className='md:hidden'>{item.price}</span>
-                    </div>
-                  </td>
-                  <td>
-                  <div className='flex flex-row justify-start items-center'>
-                    <button className="px-2 py-1 border border-gray-300">-</button>
-                    <span className="px-2 text-sm md:text-base">{item.quantity}</span>
-                    <button className="px-2 py-1 border border-gray-300">+</button>
-                  </div>
-                  </td>
-                  <td>
-                    <div className="hidden md:block p-1 md:p-4 md:text-base">{item.price}</div>
-                  </td>
-                  <td className="p-1 md:p-4 relative">
-                    <p>{item.total}</p>
-                    <button className="text-searchBg absolute md:top-[30%] top-[25%] right-[-15%] md:right-[-20%] text-4xl">&times;</button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mt-6 space-y-4 md:space-y-0">
-          <div className="flex items-center space-x-2">
-            <label htmlFor="promoCode" className="text-sm">Promo Code?</label>
-            <input type="text" id="promoCode" className="border border-gray-300 p-2 rounded" placeholder="Enter promo code" />
-          </div>
-          <div className='w-full md:w-[40%]'>
-            <div className='w-full  flex flex-row justify-between'>
-                <p className="text-sm">Sub-Total <span className='text-searchBg'>(Tax Incl.)</span>: 
-                </p>
-                <span className="font-semibold">N33,000</span>
-            </div>
-            <div className='flex flex-row justify-between w-full'>
-                <p className="text-sm">Promo <span className='text-searchBg'>(15%)</span>: 
-                </p>
-                <span className="font-semibold">N4590</span>
-            </div>
-            <p className=""></p>
-            <div className='text-xl font-semibold border-dashed border-2 border-t-black flex flex-row justify-between w-full'>
-                <p className="text-xl">TOTAL:</p>
-                <span className="font-semibold">N28,050</span>
-            </div>
-          </div>
-        </div>
-        <div className="flex justify-between items-center mt-6">
-          <button className="flex items-center space-x-2 text-orange-600 border border-orange-600 px-4 py-2 rounded">
-            <span>&larr;</span>
-            <span>Back to Shop</span>
-          </button>
-          <button className="bg-orange-600 text-white px-4 py-2 rounded">
-            Check-Out &rarr;
-          </button>
-        </div>
-      </div>
     </div>
   );
 };
@@ -129,3 +46,78 @@ const cartItems = [
     total: "N5,000",
   },
 ];
+
+const OrderSummary = () => {
+  const router = useRouter();
+
+  const toHome = (event:any) => {
+    event.preventDefault();
+    router.push('/');
+  };
+
+  return (
+    <div className="h-full bg-gray-100 p-4 md:p-8">
+      <div className="flex flex-col justify-center items-center max-w-7xl mx-auto bg-white shadow-lg rounded-lg p-6">
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h2 className="text-xl md:text-2xl font-semibold mb-4">Order Summary</h2>
+            <div className="space-y-4">
+              {cartItems.map((item, index) => (
+                <div key={index} className="bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <Image src={item.img} alt={item.name} width={50} height={50} className="rounded" />
+                    <span>{item.name} ({item.quantity})</span>
+                  </div>
+                  <span>{item.total}</span>
+                </div>
+              ))}
+            </div>
+            <button className="flex items-center space-x-2 text-orange-600 border border-orange-600 px-4 py-2 rounded mt-4"
+            onClick={toHome}>
+              <span>&larr;</span>
+              <span>Back to Shop</span>
+            </button>
+          </div>
+          <div className='md:border-l-4 md:p-4 border-gray-100'>
+            <h2 className="text-xl md:text-2xl font-semibold mb-4">Payment Information</h2>
+            <form className="space-y-4" onSubmit={toHome}>
+              <div className="flex items-center space-x-4">
+                <input type="checkbox" id="creditCard" className="form-checkbox" checked readOnly />
+                <label htmlFor="creditCard" className="text-sm">Debit/Credit Card</label>
+              </div>
+              <div className="flex items-center space-x-4">
+                <input type="checkbox" id="payOnDelivery" className="form-checkbox" />
+                <label htmlFor="payOnDelivery" className="text-sm">Pay on Delivery</label>
+              </div>
+              <div>
+                <label htmlFor="cardNumber" className="text-sm">Card number</label>
+                <input type="text" id="cardNumber" className="border border-gray-300 p-2 rounded w-full" value="1234 5678 9012 3456" readOnly />
+              </div>
+              <div>
+                <label htmlFor="name" className="text-sm">Name</label>
+                <input type="text" id="name" className="border border-gray-300 p-2 rounded w-full" value="Catherine Smith" readOnly />
+              </div>
+              <div className="flex space-x-4">
+                <div>
+                  <label htmlFor="expiryDate" className="text-sm">Expiry date</label>
+                  <input type="text" id="expiryDate" className="border border-gray-300 p-2 rounded w-full" value="04/27" readOnly />
+                </div>
+                <div>
+                  <label htmlFor="cvv" className="text-sm">CVV</label>
+                  <input type="text" id="cvv" className="border border-gray-300 p-2 rounded w-full" value="246" readOnly />
+                </div>
+              </div>
+              <div className="flex items-center space-x-4">
+                <input type="checkbox" id="saveCard" className="form-checkbox" checked readOnly />
+                <label htmlFor="saveCard" className="text-sm">Save Card for future use</label>
+              </div>
+              <button className="bg-orange-600 text-white px-4 py-2 rounded w-full">Continue</button>
+            </form>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  );
+};
