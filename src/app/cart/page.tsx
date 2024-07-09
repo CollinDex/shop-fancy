@@ -30,7 +30,7 @@ const ShoppingCart = () => {
   };
 
   return (
-    <div className="w-full min-h-screen p2 md:p-4 mt-4 -mb-16">
+    <div className="w-full min-h-screen p2 md:p-4 mt-4">
       <div className="w-full p-2">
         <header className="flex justify-start items-center border-b md:pb-4 mb-6">
           <h1 className="text-xl md:text-2xl font-semibold">Shopping Cart</h1>
